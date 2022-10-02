@@ -23,7 +23,7 @@
     sm:h-[70vh] sm:w-[45%] sm:mt-4 sm:mb-0"> -->
     <div class="flex flex-col w-[80%] mx-auto h-auto min-h-[40vh] mt-4
     sm:w-[45%]">
-      <div class="text-white text-2xl w-full text-center bg-red-800 shadow-md shadow-black z-20">待處理{{ todos.length ?'-'+todos.length:'' }}</div>
+      <div class="text-white text-2xl w-full text-center bg-red-800 shadow-md shadow-black z-20">待處理{{ todos.length ?':'+todos.length:'' }}</div>
       <div
       cdkDropList
       [cdkDropListData]="todos"
@@ -48,7 +48,7 @@
     <div class="flex flex-col w-[80%] mx-auto h-auto min-h-[40vh] mt-4
         sm:w-[45%]">
       <div
-      class="text-black text-2xl w-full text-center bg-yellow-600 shadow-md shadow-black z-10">處理中{{ in_progress.length ?'-'+in_progress.length:'' }}</div>
+      class="text-black text-2xl w-full text-center bg-yellow-600 shadow-md shadow-black z-10">處理中{{ in_progress.length ?':'+in_progress.length:'' }}</div>
 
       <div
       cdkDropList
@@ -75,7 +75,7 @@
 
     class="flex flex-col w-[80%] mx-auto h-auto min-h-[40vh] mt-4
     sm:w-[45%]">
-      <div class="text-white text-2xl w-full text-center bg-green-700 shadow-md shadow-black z-10">已完成{{ done.length ?'-'+done.length:'' }}</div>
+      <div class="text-white text-2xl w-full text-center bg-green-700 shadow-md shadow-black z-10">已完成{{ done.length ?':'+done.length:'' }}</div>
 
       <div
       cdkDropList

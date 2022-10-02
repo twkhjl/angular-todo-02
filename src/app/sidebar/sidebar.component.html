@@ -7,7 +7,7 @@
     [ngClass]="validate_is_blank()"
     class="block
     bg-gray-800 outline-none p-2 text-gray-300 resize-none focus:ring-gray-600 focus:ring-2
-    w-[90%] h-[20vh]
+    w-[90%] h-[150px]
     mx-auto mt-[2.5vh]
     transition-all duration-150"
     placeholder="新增待辦事項"></textarea>
@@ -17,7 +17,8 @@
     top-[12vh] right-[8vh]
     w-[34px]  text-2xl text-white
     opacity-30
-    sm:top-[16vh] sm:right-[6vh]">
+    sm:top-[50vh] sm:right-[6vh]"
+    [ngClass]="is_blank?'opacity-100':''">
     <ng-container *ngIf="!is_blank">
       <i class="fa-solid fa-face-smile-wink"></i>
     </ng-container>
@@ -27,6 +28,11 @@
 
     </div>
     <button (click)="create();newItem.value=''"
-    class="bg-teal-600 w-[50%] mx-auto h-[50px] m-4 rounded-md shadow-sm shadow-black hover:bg-teal-400 text-2xl">新增</button>
+    class="bg-teal-600 text-xl rounded-md
+    h-[50px] w-[50%] m-2 p-2 mx-auto
+    shadow-sm shadow-black
+    hover:bg-teal-400
+    sm:w-[80%]
+    ">新增</button>
   </div>
 

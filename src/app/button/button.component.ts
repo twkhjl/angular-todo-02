@@ -16,8 +16,7 @@ export class ButtonComponent implements OnInit {
   }
 
   btnClassList() {
-    let defaultClassList = `text-4xl py-2 px-2
-    mb-2 rounded-md
+    let defaultClassList = `text-2xl rounded-md px-2
     sm:text-xl`;
     let defaultColor = "text-black";
 
