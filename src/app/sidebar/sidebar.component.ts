@@ -9,15 +9,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class SidebarComponent implements OnInit {
 
+  constructor() { }
+  ngOnInit(): void {
+  }
+
   @Output() createEvent = new EventEmitter<any>();
 
   tmpVal:string="";
   is_blank:boolean=false;
+  is_typing:boolean=false;
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
 
 
