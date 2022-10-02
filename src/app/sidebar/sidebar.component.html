@@ -1,0 +1,32 @@
+
+<div class="relative w-full h-[30vh] bg-teal-900 mt-[10vh] flex flex-col
+  sm:w-[15vw] sm:h-[90vh]">
+    <textarea
+    #newItem
+    (input)="updateTmpVal($event)"
+    [ngClass]="validate_is_blank()"
+    class="block
+    bg-gray-800 outline-none p-2 text-gray-300 resize-none focus:ring-gray-600 focus:ring-2
+    w-[90%] h-[20vh]
+    mx-auto mt-[2.5vh]
+    transition-all duration-150"
+    placeholder="新增待辦事項"></textarea>
+
+    <!-- icon in textarea -->
+    <div class="absolute
+    top-[12vh] right-[8vh]
+    w-[34px]  text-2xl text-white
+    opacity-30
+    sm:top-[16vh] sm:right-[6vh]">
+    <ng-container *ngIf="!is_blank">
+      <i class="fa-solid fa-face-smile-wink"></i>
+    </ng-container>
+    <ng-container *ngIf="is_blank">
+      <i class="fa-solid fa-face-tired text-red-600"></i>
+    </ng-container>
+
+    </div>
+    <button (click)="create();newItem.value=''"
+    class="bg-teal-600 w-[50%] mx-auto h-[50px] m-4 rounded-md shadow-sm shadow-black hover:bg-teal-400 text-2xl">新增</button>
+  </div>
+
