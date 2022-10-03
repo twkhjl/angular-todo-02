@@ -11,7 +11,11 @@ export class ButtonComponent implements OnInit {
   @Input() btnColor!: string
   @Input() iconStyle!: string
 
+  @Input() is_enabled:boolean=true;
+
   onClick() {
+    if(!this.is_enabled){return;}
+
     this.clickEvent.emit();
   }
 
@@ -19,6 +23,12 @@ export class ButtonComponent implements OnInit {
     let defaultClassList = `text-2xl rounded-md px-2
     sm:text-xl`;
     let defaultColor = "text-black";
+    let disabledBtnStyle="text-gray-500 opacity-50";
+
+    if(!this.is_enabled){
+      return `${defaultClassList} ${disabledBtnStyle}`;
+
+    }
 
     if (this.btnColor) {
       return `${defaultClassList} ${this.btnColor}`;

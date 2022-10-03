@@ -1,4 +1,9 @@
 <!-- <button class="text-xl text-red-500 py-2 px-2 mb-2 rounded-md"> -->
-  <button [ngClass]="btnClassList()">
-  <i [ngClass]="iconClassList()" (click)="onClick();"></i>
+  <button
+  [ngClass]="btnClassList()"
+  (click)="onClick();"
+  [attr.disabled]="is_enabled?null:'true'">
+
+  <i [ngClass]="iconClassList()" ></i>
+
 </button>

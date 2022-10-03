@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { TodoComponent } from './todo/todo.component';
 
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Item } from './model/item';
-import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -45,5 +41,6 @@ export class AppComponent {
     this.todos.unshift(
       {description,done:false});
   }
+
 
 }

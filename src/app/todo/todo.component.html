@@ -1,4 +1,5 @@
 
+
 <!-- todo item -->
 <!-- <div
 cdkDrag
@@ -8,6 +9,7 @@ border-b-2 border-black p-2
 md:flex md:items-baseline"> -->
 <div
 cdkDrag
+[cdkDragDisabled]="editable?'isDisabled':null"
 #todo_item
 class="
 text-white bg-gray-700
@@ -19,18 +21,19 @@ md:items-baseline">
   <pre class="
   text-2xl
   h-auto
-  break-all
+  break-all overflow-clip
     md:ml-0 md:mr-auto">{{ todo.description }}</pre>
 
 </ng-container>
 
 <ng-container *ngIf="editable">
     <textarea
-    (input)="updateTmpVal($event)"
     class="
     bg-gray-500 text-xl resize-none ring-2 ring-gray-200 rounded-md
     w-full mx-auto h-[32px] px-2 overflow-y-auto "
-     value="{{ todo.description }}"></textarea>
+    [(ngModel)]="tmpVal"
+    value="{{ todo.description }}"
+    ></textarea>
 </ng-container>
 
 
@@ -39,14 +42,13 @@ md:items-baseline">
   <div class="flex justify-end items-start
   mr-2
    md:space-x-0 md:ml-4">
-
     <ng-container *ngIf="!editable">
-      <app-button [btnColor]="'text-green-600'" iconStyle="fa-solid fa-pen" (clickEvent)="editable=!editable"></app-button>
+      <app-button [btnColor]="'text-green-600'" iconStyle="fa-solid fa-pen" (clickEvent)="edit()"></app-button>
       <app-button [btnColor]="'text-red-500'" iconStyle="fa-solid fa-trash-can" (clickEvent)="remove()"></app-button>
     </ng-container>
 
     <ng-container *ngIf="editable">
-      <app-button [btnColor]="'text-white'" iconStyle="fa-solid fa-floppy-disk" (clickEvent)="update()"></app-button>
+      <app-button [btnColor]="'text-white'" iconStyle="fa-solid fa-floppy-disk" [is_enabled]="chk_change(todo.description)" (clickEvent)="update()"></app-button>
       <app-button [btnColor]="'text-gray-400'" iconStyle="fa-solid fa-right-to-bracket" (clickEvent)="editable=!editable"></app-button>
     </ng-container>
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '../model/item';
 
 @Component({
@@ -14,18 +14,30 @@ export class TodoComponent implements OnInit {
 
   editable=false
   tmpVal:string=""
+  test:string="test"
+
 
 
   updateTmpVal(event:any){
     this.tmpVal=event.target.value;
   }
 
+  chk_change(old_value:string){
+    if(old_value==this.tmpVal){return false;}
+    return true;
+
+  }
 
 
   remove(){
 
     this.todos.splice(this.idx,1);
     return;
+  }
+
+  edit(){
+    this.editable=!this.editable;
+    this.tmpVal=this.todo.description;
   }
 
   update(){

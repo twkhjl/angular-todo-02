@@ -3,8 +3,8 @@
   <textarea
   #newItem
   (input)="updateTmpVal($event);is_typing=true;"
-  (blur)="is_typing=false;"
-    [ngClass]="validate_is_blank()" class="block
+  (blur)="is_valid=true;is_typing=false;"
+    [ngClass]="chk_is_valid()" class="block
     bg-gray-800 outline-none p-2 text-gray-300 resize-none rounded-md
     w-[90%] h-[50vh]
     mx-auto mt-[2.5vh]
@@ -17,16 +17,16 @@
     bottom-[9vh] right-[5vh]
     w-[34px]  text-2xl text-white
     opacity-30
-    sm:top-[18vh] sm:left-[2vh]" [ngClass]="is_blank?'opacity-100':''">
-    <ng-container *ngIf="!is_blank && !is_typing">
+    sm:top-[18vh] sm:left-[2vh]" [ngClass]="!is_valid?'opacity-100':''">
+    <ng-container *ngIf="is_valid && !is_typing">
       <i class="fa-solid fa-face-smile-wink"></i>
     </ng-container>
-    <ng-container *ngIf="is_blank && !is_typing">
+    <ng-container *ngIf="!is_valid && !is_typing">
       <i class="fa-solid fa-face-tired text-red-600"></i>
     </ng-container>
 
   </div>
-  <button (click)="create();newItem.value=''" class="bg-teal-600 text-xl rounded-md
+  <button (click)="create(newItem)" class="bg-teal-600 text-xl rounded-md
     h-[10vh] w-[50%] m-2 p-2 mx-auto
     shadow-sm shadow-black
     hover:bg-teal-400

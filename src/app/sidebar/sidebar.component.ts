@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   @Output() createEvent = new EventEmitter<any>();
 
   tmpVal:string="";
-  is_blank:boolean=false;
+  is_valid:boolean=true;
   is_typing:boolean=false;
 
 
@@ -24,23 +24,27 @@ export class SidebarComponent implements OnInit {
 
 
   updateTmpVal(event:any){
-    this.is_blank=false;
+    this.is_valid=true;
     this.tmpVal=event.target.value;
 
   }
-  validate_is_blank(){
+  chk_is_valid(){
     let class_list_err='ring-red-600 placeholder-red-600 focus:ring-red-600 ring-2';
-    return this.is_blank?class_list_err:''
+    return !this.is_valid?class_list_err:''
   }
 
-  create(){
+  create(textArea:HTMLTextAreaElement){
+
     if(this.tmpVal.trim().length===0){
-      this.is_blank=true;
+      this.is_valid=false;
+      textArea.focus();
       return;
     }
+
     this.createEvent.emit(this.tmpVal);
     this.tmpVal='';
-    this.is_blank=false;
+    this.is_valid=true;
+    textArea.value='';
 
   }
 
