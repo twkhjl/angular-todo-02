@@ -20,21 +20,22 @@ md:items-baseline">
 <ng-container *ngIf="!editable">
   <pre class="
   text-2xl
-  h-auto
+  w-[60%] h-auto
   break-all overflow-clip
     md:ml-0 md:mr-auto">{{ todo.description }}</pre>
 
 </ng-container>
 
-<ng-container *ngIf="editable">
-    <textarea
-    class="
-    bg-gray-500 text-xl resize-none ring-2 ring-gray-200 rounded-md
-    w-full mx-auto h-[32px] px-2 overflow-y-auto "
-    [(ngModel)]="tmpVal"
-    value="{{ todo.description }}"
-    ></textarea>
-</ng-container>
+  <textarea
+  #textarea_edit_todo_item
+  [ngClass]="editable?'':'hidden'"
+  (input)="change_height($event)"
+  class="
+  bg-gray-500 text-xl resize-none ring-2 ring-gray-200 rounded-md
+  w-full mx-auto h-auto px-2 overflow-y-auto "
+  [(ngModel)]="tmpVal"
+  value="{{ todo.description }}"
+  ></textarea>
 
 
 
@@ -43,8 +44,8 @@ md:items-baseline">
   mr-2
    md:space-x-0 md:ml-4">
     <ng-container *ngIf="!editable">
-      <app-button [btnColor]="'text-green-600'" iconStyle="fa-solid fa-pen" (clickEvent)="edit()"></app-button>
-      <app-button [btnColor]="'text-red-500'" iconStyle="fa-solid fa-trash-can" (clickEvent)="remove()"></app-button>
+      <app-button [btnColor]="'text-green-600'" iconStyle="fa-solid fa-pen" (clickEvent)="edit(textarea_edit_todo_item)"></app-button>
+      <app-button #btn [btnColor]="'text-red-500'" iconStyle="fa-solid fa-trash-can" (clickEvent)="remove()"></app-button>
     </ng-container>
 
     <ng-container *ngIf="editable">

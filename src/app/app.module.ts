@@ -17,6 +17,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { ButtonComponent } from './button/button.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogContentComponent } from './dialog/dialog-content/dialog-content.component';
+import { TttComponent } from './ttt/ttt.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { ButtonComponent } from './button/button.component';
     TodoComponent,
     SidebarComponent,
     ButtonComponent,
+    DialogComponent,
+    DialogContentComponent,
+    TttComponent,
   ],
   imports: [
     FormsModule,

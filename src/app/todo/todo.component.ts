@@ -1,4 +1,4 @@
-import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '../model/item';
 
 @Component({
@@ -8,47 +8,60 @@ import { Item } from '../model/item';
 })
 export class TodoComponent implements OnInit {
 
-  @Input() todos!:Item[]
-  @Input() todo!:Item
-  @Input() idx!:number
 
-  editable=false
-  tmpVal:string=""
-  test:string="test"
-
-
-
-  updateTmpVal(event:any){
-    this.tmpVal=event.target.value;
+  constructor() { }
+  ngOnInit(): void {
   }
 
-  chk_change(old_value:string){
-    if(old_value==this.tmpVal){return false;}
+  @Input() todos!: Item[]
+  @Input() todo!: Item
+  @Input() idx!: number
+
+  editable = false
+  tmpVal: string = ""
+  test: string = "test"
+
+
+  chk_change(old_value: string) {
+    if (old_value == this.tmpVal) { return false; }
     return true;
 
   }
 
 
-  remove(){
+  change_height(event: any) {
 
-    this.todos.splice(this.idx,1);
+    event.target.style.height = 0;
+    event.target.style.height = (event.target.scrollHeight) + "px";
+
+  }
+
+  remove() {
+    this.todos.splice(this.idx, 1);
     return;
   }
 
-  edit(){
-    this.editable=!this.editable;
-    this.tmpVal=this.todo.description;
+  edit(textarea: any) {
+    setTimeout(() => {
+      textarea.focus();
+      let scrollHeight = textarea.scrollHeight;
+      textarea.style = `height:${scrollHeight}px`;
+    }, 100);
+
+
+
+    this.editable = !this.editable;
+    this.tmpVal = this.todo.description;
   }
 
-  update(){
-    this.todos[this.idx].description=this.tmpVal;
-    this.editable=false;
+  update() {
+    this.todos[this.idx].description = this.tmpVal;
+    this.editable = false;
   }
 
-  constructor() {}
 
-  ngOnInit(): void {
-  }
+
+
 
 
 }
